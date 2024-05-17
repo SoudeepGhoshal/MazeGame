@@ -80,7 +80,9 @@ public class RandomLevel {
         }
 
         // Creates the string which is the valid path
-        String path = generateRandomString(15, 50); // Chosen arbitrarily
+        String path = "";
+        while (path.length() < 15)
+            path = generateRandomString(15, 50); // Chosen arbitrarily
         System.out.println(path); // Remove later
 
         // Validates moves so that the string can be treated as the correct path
