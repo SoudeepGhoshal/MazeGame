@@ -43,7 +43,7 @@ public class RandomLevel {
         int currPos = 0;
         int nextPos = 0;
         for (int i = 0; i < GRID_SIZE * GRID_SIZE; i++) { // i represents the currPos
-            for (int j = 0; j < 2; j++) {
+            for (int j = 0; j < 2; j++) { //j = 0 ~ 30% | j = 1 ~ 55 % | j = 2 ~ 65% | j = 4 ~ 70%
                 if (validMoves[i][j] == -1) {
                     char[] validChars = getValidChars(i);
                     char c = getRandomValidChar(validChars, ' ');
