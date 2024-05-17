@@ -42,7 +42,7 @@ public class RandomLevel {
         // Fills the rest of the positions with random valid values for each cell
         int nextPos;
         for (int i = 0; i < GRID_SIZE * GRID_SIZE; i++) { // i represents the currPos
-            for (int j = 0; j < 2; j++) { //j = 0 ~ 30% | j = 1 ~ 55 % | j = 2 ~ 65% | j = 4 ~ 70%
+            for (int j = 0; j < 2; j++) { //j = 0 ~ 30% | j = 1 ~ 50 % | j = 2 ~ 60% | j = 4 ~ 70%
                 if (validMoves[i][j] == -1) {
                     char[] validChars = getValidChars(i);
                     char c = getRandomValidChar(validChars, ' ');

@@ -5,7 +5,7 @@ import level.*;
 
 public class Main {
     public static void main(String[] args) {
-            RandomLevel level = new RandomLevel(5);
+            RandomLevel level = new RandomLevel(10);
             level.generateLevel();
         }
     }
