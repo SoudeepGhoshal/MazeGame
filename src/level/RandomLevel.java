@@ -6,6 +6,10 @@ public class RandomLevel {
     private final int GRID_SIZE;
     Random random;
 
+    int[][] validMoves; // Array holding all possible valid moves from any cell
+    String path;
+    int endPoint;
+
     // 0: UP
     // 1: DOWN
     // 2: LEFT
@@ -14,12 +18,12 @@ public class RandomLevel {
     public RandomLevel(int gridSize) {
         GRID_SIZE = gridSize;
         random = new Random();
+        validMoves = new int[GRID_SIZE * GRID_SIZE][4];
+        path = "";
+        endPoint = 0;
     }
 
     public void generateLevel() {
-        // Creates the array holding all possible valid moves from any cell
-        int[][] validMoves = new int[GRID_SIZE * GRID_SIZE][4];
-
         // Initialized the array with -1 indicating no restrictions have been applied yet
         for (int[] i: validMoves) {
             Arrays.fill(i, -1);
@@ -86,8 +90,7 @@ public class RandomLevel {
             }
         }
 
-        // Creates the string which is the valid path
-        String path = "";
+        // Generates the string which is the valid path
         while (path.length() < 15)
             path = generateRandomString(15, 50); // Chosen arbitrarily
         System.out.println(path); // Remove later
@@ -126,6 +129,7 @@ public class RandomLevel {
             }
             currPos = nextPos;
         }
+        endPoint = currPos;
 
         // Remove later
         int count = 0;
