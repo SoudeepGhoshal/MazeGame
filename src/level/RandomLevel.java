@@ -16,7 +16,7 @@ public class RandomLevel {
         random = new Random();
     }
 
-    public void generate() {
+    public void generateLevel() {
         // Creates the array holding all possible valid moves from any cell
         int[][] validMoves = new int[GRID_SIZE * GRID_SIZE][4];
 
@@ -40,8 +40,7 @@ public class RandomLevel {
         }
 
         // Fills the rest of the positions with random valid values for each cell
-        int currPos = 0;
-        int nextPos = 0;
+        int nextPos;
         for (int i = 0; i < GRID_SIZE * GRID_SIZE; i++) { // i represents the currPos
             for (int j = 0; j < 2; j++) { //j = 0 ~ 30% | j = 1 ~ 55 % | j = 2 ~ 65% | j = 4 ~ 70%
                 if (validMoves[i][j] == -1) {
@@ -94,7 +93,7 @@ public class RandomLevel {
         System.out.println(path); // Remove later
 
         // Validates moves so that the string can be treated as the correct path
-        //currPos = 0;
+        int currPos = 0;
         nextPos = 0;
         for (char c: path.toCharArray()) {
             switch (c - '0') {
