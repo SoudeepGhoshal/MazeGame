@@ -43,7 +43,7 @@ public class RandomLevel {
         int currPos = 0;
         int nextPos = 0;
         for (int i = 0; i < GRID_SIZE * GRID_SIZE; i++) { // i represents the currPos
-            for (int j = 0; j < 4; j++) {
+            for (int j = 0; j < 2; j++) {
                 if (validMoves[i][j] == -1) {
                     char[] validChars = getValidChars(i);
                     char c = getRandomValidChar(validChars, ' ');
@@ -79,6 +79,14 @@ public class RandomLevel {
             }
         }
 
+        // Invalidates the remaining undecided moves
+        for (int i = 0; i < GRID_SIZE * GRID_SIZE; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (validMoves[i][j] == -1)
+                    validMoves[i][j] = 0;
+            }
+        }
+
         // Creates the string which is the valid path
         String path = "";
         while (path.length() < 15)
@@ -86,7 +94,7 @@ public class RandomLevel {
         System.out.println(path); // Remove later
 
         // Validates moves so that the string can be treated as the correct path
-        currPos = 0;
+        //currPos = 0;
         nextPos = 0;
         for (char c: path.toCharArray()) {
             switch (c - '0') {
@@ -121,14 +129,20 @@ public class RandomLevel {
         }
 
         // Remove later
+        int count = 0;
         System.out.println("\t" + "U D L R");
         for (int i = 0; i < GRID_SIZE * GRID_SIZE; i++) {
             System.out.print(i + "\t");
             for (int j = 0; j < 4; j++) {
                 System.out.print(validMoves[i][j] + " ");
+                if (validMoves[i][j] == 1)
+                    count++;
             }
             System.out.println();
         }
+        // Counts % of 1
+        float per1 = count * 100.0f / (GRID_SIZE * GRID_SIZE * 4.0f);
+        System.out.println("Percentage of 1: " + per1 + "%");
     }
 
     private String generateRandomString(int minLength, int maxLength) {
